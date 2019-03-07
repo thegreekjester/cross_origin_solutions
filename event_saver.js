@@ -1,3 +1,5 @@
+//Thank you Cooper Reid for your client side event dispatcher!
+
 var templatePayload = {
     "account_id": 'account123',
     "visitors": [{
