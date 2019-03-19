@@ -80,7 +80,7 @@ function onActivated(e) {
         var el;
         utils.waitForElement(obj.selector).then(function () {
             el = document.querySelector(obj.selector);
-            if (el && el.href) {
+            if (el && el.href && el.href.indexOf('opt_id') === -1) {
                 console.log('time to change', el.href);
 
                 el.href += (el.href.split('?')[1] ? '&' : '?') + 'event=' + obj.id;
