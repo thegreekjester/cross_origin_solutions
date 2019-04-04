@@ -9,8 +9,19 @@ window["optimizely"].push({
     handler: onActivated
 });
 
+// Check if enduserID is in URL 
+if (window.location.href.indexOf('opt_id') !== -1) {
 
 
+    var queryId = getUrlParameter('opt_id');
+
+    if (queryId !== endUserId) {
+        var topLevel = window.location.hostname.split('.').slice(-2).join('.');
+        setCookie('optimizelyEndUserId', queryId, 60, topLevel);
+
+    }
+
+}
 
 function onActivated() {
 
@@ -20,20 +31,6 @@ function onActivated() {
     // EndUserID
     var endUserId = getCookie('optimizelyEndUserId');
 
-
-    // Check if enduserID is in URL 
-    if (window.location.href.indexOf('opt_id') !== -1) {
-
-
-        var queryId = getUrlParameter('opt_id');
-
-        if (queryId !== endUserId) {
-            var topLevel = window.location.hostname.split('.').slice(-2).join('.');
-            setCookie('optimizelyEndUserId', queryId, 60, topLevel);
-
-        }
-
-    }
     // Create empty <a> list
     var a_tags = [];
 
